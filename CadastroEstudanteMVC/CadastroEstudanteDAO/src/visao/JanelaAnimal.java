@@ -21,7 +21,7 @@ import javax.swing.JScrollPane;
 import java.awt.GridLayout;
 import net.miginfocom.swing.MigLayout;
 
-public class JanelaEstudante extends JFrame {
+public class JanelaAnimal extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField txtNome;
@@ -42,7 +42,7 @@ public class JanelaEstudante extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					JanelaEstudante frame = new JanelaEstudante();
+					JanelaAnimal frame = new JanelaAnimal();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -61,7 +61,7 @@ public class JanelaEstudante extends JFrame {
 	 * 
 	 */
 
-	public JanelaEstudante() {
+	public JanelaAnimal() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 468, 631);
 		contentPane = new JPanel();
@@ -354,7 +354,9 @@ public class JanelaEstudante extends JFrame {
 
 	private Animal lerFormulario() {
 		String nome = txtNome.getText().trim();
-		String curso = txtEspecie.getText().trim();
+		String especie = txtEspecie.getText().trim();
+		String nascimento = txtNascimento.getText().trim();
+		String dieta = txtDieta.getText().trim();
 		if (nome.isEmpty()) {
 
 			JOptionPane.showMessageDialog(this, "Preencha o nome!",
@@ -364,26 +366,33 @@ public class JanelaEstudante extends JFrame {
 
 		}
 
-		double nota;
+		double tamanho;
 		try {
 
-			nota = Double.parseDouble(txtTamanho.getText().trim().replace(",", "."));
+			tamanho = Double.parseDouble(txtTamanho.getText().trim().replace(",", "."));
 		} catch (NumberFormatException ex) {
-			JOptionPane.showMessageDialog(this, "Nota deve ser um numero!",
+			JOptionPane.showMessageDialog(this, "Tamanho deve ser um numero!",
 					"Aviso", JOptionPane.WARNING_MESSAGE);
 
 			txtTamanho.requestFocus();
 			return null;
 
 		}
+		
+		double peso;
+		try {
 
-		if (nota < 0 || nota > 10) {
-			JOptionPane.showMessageDialog(this, "A nota deve estar entre 0 e 10.",
+			peso = Double.parseDouble(txtPeso.getText().trim().replace(",", "."));
+		} catch (NumberFormatException ex) {
+			JOptionPane.showMessageDialog(this, "Peso deve ser um numero!",
 					"Aviso", JOptionPane.WARNING_MESSAGE);
-			txtTamanho.requestFocus();
+
+			txtPeso.requestFocus();
 			return null;
 
 		}
+
+		
 
 		return new Animal(nome, especie, tamanho, peso, nascimento, dieta);
 	}
