@@ -1,0 +1,31 @@
+-- setup_banco.sql
+-- Práticas em Desenvolvimento de Sistemas II — IFSC
+-- Rode este script UMA VEZ para preparar o banco da prática.
+-- No MySQL Workbench, ou no terminal:  mysql -u root -p < setup_banco.sql
+
+-- 1. cria o banco
+CREATE DATABASE IF NOT EXISTS aquario CHARACTER SET utf8mb4;
+
+-- 2. cria o usuário que o programa Java vai usar
+CREATE USER IF NOT EXISTS 'funcionario_cd'@'localhost' IDENTIFIED BY 'funcionario_pw';
+GRANT ALL PRIVILEGES ON aquario.* TO 'funcionario_cd'@'localhost';
+FLUSH PRIVILEGES;
+
+-- 3. cria a tabela e alguns dados de exemplo
+USE aquario;
+CREATE TABLE IF NOT EXISTS animal (
+    idAnimal    INT PRIMARY KEY AUTO_INCREMENT,
+    nome  VARCHAR(80),
+    especie VARCHAR(60) NOT NULL,
+    tamanho DECIMAL(4,2),
+    peso  DECIMAL(4,2),
+    nascimento DATE,
+    dieta VARCHAR(30)
+);
+
+INSERT INTO animal (nome, especie, tamanho, peso, nascimento, dieta) VALUES
+    ('Dumbo', 'Polvo-Dumbo', 20.0, 4.5, '2025-05-23', 'Carnívoro'),
+    ('Leao',  'Peixe-Leão',  30.4, 0.97, '2022-10-23', 'Carnívoro'),
+    ('Vaquinha', 'Lesma-do-mar', 0.7, 0.01, '2026-07-19', 'Herbívoro');
+
+SELECT * FROM animal;
