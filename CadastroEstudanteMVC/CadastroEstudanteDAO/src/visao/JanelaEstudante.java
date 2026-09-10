@@ -15,8 +15,8 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import java.util.List;
-import dao.EstudanteDAO;
-import modelo.Estudante;
+import dao.AnimalDAO;
+import modelo.Animal;
 import javax.swing.JScrollPane;
 import java.awt.GridLayout;
 import net.miginfocom.swing.MigLayout;
@@ -238,7 +238,7 @@ public class JanelaEstudante extends JFrame {
 
 		}
 
-		Estudante e = lerFormulario();
+		Animal e = lerFormulario();
 		if (e == null)
 			return;
 
@@ -314,7 +314,7 @@ public class JanelaEstudante extends JFrame {
 
 	private DefaultTableModel modelo;
 	// Ponte com o banco: um unico objeto serve a janela inteira.
-	private final EstudanteDAO dao = new EstudanteDAO();
+	private final AnimalDAO dao = new AnimalDAO();
 	// Id do estudante selecionado na tabela. Zero = nenhum selecionado.
 	private int idSelecionado = 0;
 	private JTextField txtPeso;
@@ -340,11 +340,11 @@ public class JanelaEstudante extends JFrame {
 
 	}
 
-	private void preencherTabela(List<Estudante> lista) {
+	private void preencherTabela(List<Animal> lista) {
 		modelo.setRowCount(0); 
-		for (Estudante e : lista) {
+		for (Animal e : lista) {
 			modelo.addRow(new Object[] {
-					e.getId(), e.getNome(), e.getCurso(), e.getNota() });
+					e.getId(), e.getNome(), e.getEspecie(), e.getTamanho(), e.getPeso(), e.getNascimento(), e.getDieta() });
 
 		}
 
@@ -352,7 +352,7 @@ public class JanelaEstudante extends JFrame {
 
 	}
 
-	private Estudante lerFormulario() {
+	private Animal lerFormulario() {
 		String nome = txtNome.getText().trim();
 		String curso = txtEspecie.getText().trim();
 		if (nome.isEmpty()) {
@@ -385,11 +385,11 @@ public class JanelaEstudante extends JFrame {
 
 		}
 
-		return new Estudante(nome, curso, nota);
+		return new Animal(nome, especie, tamanho, peso, nascimento, dieta);
 	}
 
 	private void cadastrar() {
-		Estudante e = lerFormulario();
+		Animal e = lerFormulario();
 		if (e == null)
 			return; // invalido: a mensagem ja apareceu
 		

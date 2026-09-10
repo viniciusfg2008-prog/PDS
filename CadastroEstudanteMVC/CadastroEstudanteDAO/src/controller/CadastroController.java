@@ -1,7 +1,7 @@
 package controller;
 
 import model.Animal;
-import model.EstudanteBD;
+import model.AnimalBD;
 import view.JanelaCadastro;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,10 +14,10 @@ import java.awt.event.ActionListener;
  * actionPerformed, e ele descobre qual botao foi clicado.
  */
 public class CadastroController implements ActionListener {
-	private EstudanteBD bd;
+	private AnimalBD bd;
 	private JanelaCadastro view;
 
-	public CadastroController(EstudanteBD bd, JanelaCadastro view) {
+	public CadastroController(AnimalBD bd, JanelaCadastro view) {
 		this.bd = bd;
 		this.view = view;
 // O "this" e o proprio Controller se registrando como ouvinte.

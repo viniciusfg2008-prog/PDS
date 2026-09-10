@@ -12,7 +12,7 @@ import java.util.List;
 * Todo o SQL do sistema esta aqui. Procure "javax.swing" neste arquivo:
 * nao ha nenhum, e e isso que permite testar esta classe sem abrir tela.
 */
-public class EstudanteBD {
+public class AnimalBD {
 // Os tres dados da conexao ficam num lugar so. Mudou o servidor,
 // muda uma linha - nao quatro.
 private static final String URL = "jdbc:mysql://localhost:3306/aquario";
@@ -91,7 +91,7 @@ public void salvar(Animal e) {
 	}
 	}
 	public List<Animal> listarTodos() {
-	String sql = "SELECT nome, matricula, telefone FROM cadastro ORDER BY nome";
+	String sql = "SELECT nome, especie, tamanho, peso, nascimento, dieta FROM cadastro ORDER BY nome";
 	List<Animal> lista = new ArrayList<>();
 	try (Connection con = abrir();
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -101,8 +101,11 @@ public void salvar(Animal e) {
 
 			Animal e = new Animal();
 			e.setNome(rs.getString("nome"));
-			e.setMatricula(rs.getString("matricula"));
-			e.setTelefone(rs.getString("telefone"));
+			e.setEspecie(rs.getString("especie"));
+			e.setTamanho(rs.getDouble("tamanho"));
+			e.setPeso(rs.getDouble("peso"));
+			e.setNascimento(rs.getString("nascimento"));
+			e.setDieta(rs.getString("dieta"));
 			lista.add(e);
 			}
 			} catch (SQLException erro) {
@@ -115,7 +118,7 @@ public void salvar(Animal e) {
 			}
 			/** Teste de ambiente: rode esta classe antes de depurar qualquer botao. */
 			public static void main(String[] args) {
-			EstudanteBD bd = new EstudanteBD();
+			AnimalBD bd = new AnimalBD();
 			try (Connection con = bd.abrir()) {
 			System.out.println("Conexao OK com " + con.getCatalog());
 			System.out.println("Cadastros no banco: " + bd.contar());

@@ -1,6 +1,6 @@
 package main;
 import controller.CadastroController;
-import model.EstudanteBD;
+import model.AnimalBD;
 import view.JanelaCadastro;
 /**
 * Junta as tres camadas. Execute SEMPRE esta classe.
@@ -10,7 +10,7 @@ import view.JanelaCadastro;
 */
 public class Main {
 public static void main(String[] args) {
-EstudanteBD bd = new EstudanteBD();
+AnimalBD bd = new AnimalBD();
 JanelaCadastro view = new JanelaCadastro();
 CadastroController controller = new CadastroController(bd, view);
 controller.iniciarTela();
