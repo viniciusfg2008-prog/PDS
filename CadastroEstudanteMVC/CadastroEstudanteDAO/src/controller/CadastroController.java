@@ -1,6 +1,6 @@
 package controller;
 
-import model.Animal;
+import model.AnimalDois;
 import model.AnimalBD;
 import view.JanelaCadastro;
 import java.awt.event.ActionEvent;
@@ -47,7 +47,7 @@ public class CadastroController implements ActionListener {
 
 	private void cadastrar() {
 // 1. pede os dados a View
-		Animal animal = new Animal();
+		AnimalDois animal = new AnimalDois();
 		animal.setNome(this.view.getTxtNome().getText());
 		animal.setEspecie(this.view.getTxtEspecie().getText());
 // 2. entrega ao Model, que aplica as regras e grava

@@ -5,7 +5,7 @@ package model;
  *
  * Nao tem import nenhum. Nao sabe que existe tela nem banco.
  */
-public class Animal {
+public class AnimalDois {
 	private String nome;
 	private String especie;
 	private Double tamanho;

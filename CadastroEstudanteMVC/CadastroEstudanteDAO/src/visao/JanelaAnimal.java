@@ -93,10 +93,10 @@ public class JanelaAnimal extends JFrame {
 		contentPane.add(btnBuscar, "cell 2 1,alignx left,aligny top");
 		tabela = new JTable();
 
-		JScrollPane scrollPane = new JScrollPane(tabela);
-		contentPane.add(scrollPane, "cell 0 3 3 1,grow");
+		JScrollPane tabelaAnimal = new JScrollPane(tabela);
+		contentPane.add(tabelaAnimal, "cell 0 3 3 1,grow");
 
-		modelo = new DefaultTableModel(new String[] { "ID", "Nome", "Especie", "Tamanho", "Peso", "Nascimento", "Dieta" }, 0);
+		modelo = new DefaultTableModel(new String[] { "id", "Nome", "Especie", "Tamanho", "Peso", "Nascimento", "Dieta" }, 0);
 		tabela.setModel(modelo);
 		tabela.setRowHeight(22);
 		
@@ -331,13 +331,21 @@ public class JanelaAnimal extends JFrame {
 	}
 
 	private void buscar() {
-		try {
-			preencherTabela(dao.buscarPorNome(txtBusca.getText().trim()));
-		} catch (SQLException ex) {
-			erro("Erro ao buscar", ex);
 
-		}
+	    String busca = txtBusca.getText().trim();
 
+	    if (busca.isEmpty()) {
+	        listar();
+	        return;
+	    }
+
+	    try {
+	        List<Animal> lista = dao.buscarPorNome(busca);
+	        preencherTabela(lista);
+
+	    } catch (SQLException ex) {
+	        erro("Erro ao buscar", ex);
+	    }
 	}
 
 	private void preencherTabela(List<Animal> lista) {
@@ -348,7 +356,7 @@ public class JanelaAnimal extends JFrame {
 
 		}
 
-		lblStatus.setText("0 animais na tabela.");
+		lblStatus.setText(lista.size() + " Animais na tabela: ");
 
 	}
 
@@ -421,6 +429,9 @@ public class JanelaAnimal extends JFrame {
 		txtNome.setText("");
 		txtEspecie.setText("");
 		txtTamanho.setText("");
+		txtPeso.setText("");
+		txtNascimento.setText("");
+		txtDieta.setText("");
 		tabela.clearSelection();
 		txtNome.requestFocus();
 		lblStatus.setText("Formulario limpo.");

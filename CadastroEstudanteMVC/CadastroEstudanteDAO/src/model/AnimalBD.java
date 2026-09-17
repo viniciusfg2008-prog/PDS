@@ -15,7 +15,7 @@ import java.util.List;
 public class AnimalBD {
 // Os tres dados da conexao ficam num lugar so. Mudou o servidor,
 // muda uma linha - nao quatro.
-private static final String URL = "jdbc:mysql://localhost:3306/aquario";
+private static final String URL = "jdbc:mysql://localhost:3306/animal";
 private static final String USER = "funcionario_cd";
 private static final String SENHA = "funcionario_pw";
 // Conexao NOVA a cada chamada. Guardar uma unica conexao num atributo
@@ -24,7 +24,7 @@ private static final String SENHA = "funcionario_pw";
 private Connection abrir() throws SQLException {
 return DriverManager.getConnection(URL, USER, SENHA);
 }
-public void salvar(Animal e) {
+public void salvar(AnimalDois e) {
 
 	// ---- REGRAS: sempre antes de gravar --------------------------
 	if (e.getNome().trim().isEmpty()) {
@@ -35,7 +35,7 @@ public void salvar(Animal e) {
 	throw new IllegalArgumentException("Preencha a espécie.");
 
 	}
-	String sql = "INSERT INTO cadastro (nome, matricula, telefone) VALUES (?, ?, ?)";
+	String sql = "INSERT INTO cadastro (nome, especie, tamanho, peso, nascimento, dieta) VALUES (?, ?, ?, ?, ?, ?)";
 	// try-with-resources: conexao e comando sao fechados sozinhos,
 	// mesmo se der excecao no meio.
 	try (Connection con = abrir();
@@ -57,11 +57,11 @@ public void salvar(Animal e) {
 
 	}
 	}
-	public boolean existeMatricula(String matricula) {
-	String sql = "SELECT id FROM cadastro WHERE matricula = ?";
+	public boolean existeEspecie(String especie) {
+	String sql = "SELECT id FROM cadastro WHERE especie = ?";
 	try (Connection con = abrir();
 	PreparedStatement ps = con.prepareStatement(sql)) {
-	ps.setString(1, matricula.trim());
+	ps.setString(1, especie.trim());
 	try (ResultSet rs = ps.executeQuery()) {
 	return rs.next(); // achou pelo menos uma linha?
 
@@ -90,16 +90,16 @@ public void salvar(Animal e) {
 
 	}
 	}
-	public List<Animal> listarTodos() {
+	public List<AnimalDois> listarTodos() {
 	String sql = "SELECT nome, especie, tamanho, peso, nascimento, dieta FROM cadastro ORDER BY nome";
-	List<Animal> lista = new ArrayList<>();
+	List<AnimalDois> lista = new ArrayList<>();
 	try (Connection con = abrir();
 			PreparedStatement ps = con.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery()) {
 
 			while (rs.next()) {
 
-			Animal e = new Animal();
+			AnimalDois e = new AnimalDois();
 			e.setNome(rs.getString("nome"));
 			e.setEspecie(rs.getString("especie"));
 			e.setTamanho(rs.getDouble("tamanho"));

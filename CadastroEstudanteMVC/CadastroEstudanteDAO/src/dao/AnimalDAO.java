@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 public class AnimalDAO {
 	public List<Animal> listar() throws SQLException {
-		String sql = "SELECT id, nome, curso, nota FROM estudante ORDER BY nota DESC";
+		String sql = "SELECT id, nome, especie, tamanho, peso, nascimento, dieta FROM animal ORDER BY nome DESC";
 		List<Animal> lista = new ArrayList<>();
 		try (Connection con = Conexao.abrir();
 		PreparedStatement ps = con.prepareStatement(sql);
@@ -29,8 +29,8 @@ public class AnimalDAO {
 		}
 		return lista;
 		}public List<Animal> buscarPorNome(String trecho) throws SQLException {
-			String sql = "SELECT id, nome, curso, nota FROM estudante "
-					+ "WHERE nome LIKE ? ORDER BY nota DESC";
+			String sql = "SELECT id, nome, especie, tamanho, peso, nascimento, dieta FROM animal "
+					+ "WHERE nome LIKE ? ORDER BY nome DESC";
 					List<Animal> lista = new ArrayList<>();
 					try (Connection con = Conexao.abrir();
 					PreparedStatement ps = con.prepareStatement(sql)) {
@@ -51,7 +51,7 @@ public class AnimalDAO {
 					}
 					return lista;
 					}public void inserir(Animal e) throws SQLException {
-						String sql = "INSERT INTO estudante (nome, curso, nota) VALUES (?, ?, ?)";
+						String sql = "INSERT INTO animal (nome, especie, tamanho, peso, nascimento, dieta) VALUES (?, ?, ?, ?, ?, ?)";
 						try (Connection con = Conexao.abrir();
 						PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 						ps.setString(1, e.getNome());

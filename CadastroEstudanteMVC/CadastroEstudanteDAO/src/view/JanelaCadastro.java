@@ -36,6 +36,9 @@ public class JanelaCadastro extends JFrame {
 	private JButton btnCadastrar;
 	private JButton btnLimpar;
 	private JButton btnFechar;
+	private JTextField textField;
+	private JTextField textField_1;
+	private JTextField textField_2;
 
 	public JanelaCadastro() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -47,34 +50,63 @@ public class JanelaCadastro extends JFrame {
 		JLabel lblNome = new JLabel("Nome");
 		lblNome.setBounds(10, 21, 77, 14);
 		contentPane.add(lblNome);
+		
 		txtNome = new JTextField();
 		txtNome.setBounds(110, 18, 96, 20);
 		contentPane.add(txtNome);
 		txtNome.setColumns(10);
+		
 // 105 e nao 88: com 88 o texto aparece cortado como "Cada...".
 		btnCadastrar = new JButton("Cadastrar");
 		btnCadastrar.setBounds(238, 17, 105, 22);
 		contentPane.add(btnCadastrar);
-		JLabel lblMatricula = new JLabel("Matricula");
-		lblMatricula.setBounds(10, 60, 76, 14);
-		contentPane.add(lblMatricula);
-		txtMatricula = new JTextField();
-		txtMatricula.setBounds(110, 57, 96, 20);
-		contentPane.add(txtMatricula);
-		txtMatricula.setColumns(10);
+		JLabel lblEspecie = new JLabel("Especie");
+		lblEspecie.setBounds(10, 60, 76, 14);
+		contentPane.add(lblEspecie);
+		txtEspecie = new JTextField();
+		txtEspecie.setBounds(110, 57, 96, 20);
+		contentPane.add(txtEspecie);
+		txtEspecie.setColumns(10);
 		btnLimpar = new JButton("Limpar");
 		btnLimpar.setBounds(238, 56, 105, 22);
 		contentPane.add(btnLimpar);
-		JLabel lblTelefone = new JLabel("Telefone");
-		lblTelefone.setBounds(10, 100, 77, 14);
-		contentPane.add(lblTelefone);
-		txtTelefone = new JTextField();
-		txtTelefone.setBounds(110, 97, 96, 20);
-		contentPane.add(txtTelefone);
-		txtTelefone.setColumns(10);
+		JLabel lblTamanho = new JLabel("Tamanho");
+		lblTamanho.setBounds(10, 100, 77, 14);
+		contentPane.add(lblTamanho);
+		txtTamanho = new JTextField();
+		txtTamanho.setBounds(110, 97, 96, 20);
+		contentPane.add(txtTamanho);
+		txtTamanho.setColumns(10);
 		btnFechar = new JButton("Fechar");
 		btnFechar.setBounds(238, 96, 105, 22);
 		contentPane.add(btnFechar);
+		
+		JLabel lblPeso = new JLabel("Peso");
+		lblPeso.setBounds(10, 131, 77, 14);
+		contentPane.add(lblPeso);
+		
+		JLabel lblNascimento = new JLabel("Nascimento");
+		lblNascimento.setBounds(10, 156, 77, 14);
+		contentPane.add(lblNascimento);
+		
+		JLabel lblDieta = new JLabel("Dieta");
+		lblDieta.setBounds(10, 188, 77, 14);
+		contentPane.add(lblDieta);
+		
+		txtPeso = new JTextField();
+		txtPeso.setBounds(110, 128, 96, 20);
+		contentPane.add(txtPeso);
+		txtPeso.setColumns(10);
+		
+		txtNascimento = new JTextField();
+		txtNascimento.setBounds(110, 153, 96, 20);
+		contentPane.add(txtNascimento);
+		txtNascimento.setColumns(10);
+		
+		txtDieta = new JTextField();
+		txtDieta.setBounds(110, 185, 96, 20);
+		contentPane.add(txtDieta);
+		txtDieta.setColumns(10);
 	}
 
 // ---- Grupo 1: entregar componentes ao Controller ------------------
@@ -85,11 +117,23 @@ public class JanelaCadastro extends JFrame {
 // ATENCAO: na versao antiga este metodo chamava-se getTextMatricula,
 // sem o "tx". Padronizado para getTxtMatricula, igual aos outros dois.
 	public JTextField getTxtEspecie() {
-		return txtMatricula;
+		return txtEspecie;
 	}
 
-	public JTextField getTxtTelefone() {
-		return txtTelefone;
+	public JTextField getTxtTamanho() {
+		return txtTamanho;
+	}
+	
+	public JTextField getTxtPeso() {
+		return txtPeso;
+	}
+	
+	public JTextField getTxtNascimento() {
+		return txtNascimento;
+	}
+	
+	public JTextField getTxtDieta() {
+		return txtDieta;
 	}
 
 	public JButton getBtnCadastrar() {
@@ -117,8 +161,11 @@ public class JanelaCadastro extends JFrame {
 
 	public void limparCampos() {
 		txtNome.setText("");
-		txtMatricula.setText("");
-		txtTelefone.setText("");
+		txtEspecie.setText("");
+		txtTamanho.setText("");
+		txtPeso.setText("");
+		txtNascimento.setText("");
+		txtDieta.setText("");
 		txtNome.requestFocus();
 	}
 
