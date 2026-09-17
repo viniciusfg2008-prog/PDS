@@ -14,18 +14,18 @@ FLUSH PRIVILEGES;
 -- 3. cria a tabela e alguns dados de exemplo
 USE aquario;
 CREATE TABLE IF NOT EXISTS animal (
-    idAnimal    INT PRIMARY KEY AUTO_INCREMENT,
+    id    INT PRIMARY KEY AUTO_INCREMENT,
     nome  VARCHAR(80),
     especie VARCHAR(60) NOT NULL,
-    tamanho DECIMAL(4,2),
-    peso  DECIMAL(4,2),
-    nascimento DATE,
+    tamanho DECIMAL(6,2),
+    peso  DECIMAL(6,2),
+    nascimento VARCHAR(10),
     dieta VARCHAR(30)
 );
 
 INSERT INTO animal (nome, especie, tamanho, peso, nascimento, dieta) VALUES
-    ('Dumbo', 'Polvo-Dumbo', 20.0, 4.5, '2025-05-23', 'Carnívoro'),
-    ('Leao',  'Peixe-Leão',  30.4, 0.97, '2022-10-23', 'Carnívoro'),
-    ('Vaquinha', 'Lesma-do-mar', 0.7, 0.01, '2026-07-19', 'Herbívoro');
+    ('Dumbo', 'Polvo-Dumbo', 20.0, 4.5, '23-05-2025', 'Carnívoro'),
+    ('Leao',  'Peixe-Leão',  30.4, 0.97, '23-10-2022', 'Carnívoro'),
+    ('Vaquinha', 'Lesma-do-mar', 0.7, 0.01, '19-07-2026', 'Herbívoro');
 
 SELECT * FROM animal;
