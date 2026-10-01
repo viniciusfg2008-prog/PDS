@@ -7,6 +7,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+import net.miginfocom.swing.MigLayout;
 
 /**
  * VIEW - a MESMA janela de antes, nas mesmas posicoes.
@@ -46,66 +47,51 @@ public class JanelaCadastro extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(null);
+		contentPane.setLayout(new MigLayout("", "[77px][96px][105px]", "[22px][22px][22px][20px][16.00px][7.00px]"));
 		JLabel lblNome = new JLabel("Nome");
-		lblNome.setBounds(10, 21, 77, 14);
-		contentPane.add(lblNome);
+		contentPane.add(lblNome, "cell 0 0,growx,aligny center");
 		
 		txtNome = new JTextField();
-		txtNome.setBounds(110, 18, 96, 20);
-		contentPane.add(txtNome);
+		contentPane.add(txtNome, "cell 1 0,growx,aligny center");
 		txtNome.setColumns(10);
 		
 // 105 e nao 88: com 88 o texto aparece cortado como "Cada...".
 		btnCadastrar = new JButton("Cadastrar");
-		btnCadastrar.setBounds(238, 17, 105, 22);
-		contentPane.add(btnCadastrar);
+		contentPane.add(btnCadastrar, "cell 2 0,growx,aligny center");
 		JLabel lblEspecie = new JLabel("Especie");
-		lblEspecie.setBounds(10, 60, 76, 14);
-		contentPane.add(lblEspecie);
+		contentPane.add(lblEspecie, "cell 0 1,growx,aligny center");
 		txtEspecie = new JTextField();
-		txtEspecie.setBounds(110, 57, 96, 20);
-		contentPane.add(txtEspecie);
+		contentPane.add(txtEspecie, "cell 1 1,growx,aligny center");
 		txtEspecie.setColumns(10);
 		btnLimpar = new JButton("Limpar");
-		btnLimpar.setBounds(238, 56, 105, 22);
-		contentPane.add(btnLimpar);
+		contentPane.add(btnLimpar, "cell 2 1,growx,aligny center");
 		JLabel lblTamanho = new JLabel("Tamanho");
-		lblTamanho.setBounds(10, 100, 77, 14);
-		contentPane.add(lblTamanho);
+		contentPane.add(lblTamanho, "cell 0 2,growx,aligny center");
 		txtTamanho = new JTextField();
-		txtTamanho.setBounds(110, 97, 96, 20);
-		contentPane.add(txtTamanho);
+		contentPane.add(txtTamanho, "cell 1 2,growx,aligny center");
 		txtTamanho.setColumns(10);
 		btnFechar = new JButton("Fechar");
-		btnFechar.setBounds(238, 96, 105, 22);
-		contentPane.add(btnFechar);
+		contentPane.add(btnFechar, "cell 2 2,growx,aligny center");
 		
 		JLabel lblPeso = new JLabel("Peso");
-		lblPeso.setBounds(10, 131, 77, 14);
-		contentPane.add(lblPeso);
+		contentPane.add(lblPeso, "cell 0 3,growx,aligny center");
 		
 		JLabel lblNascimento = new JLabel("Nascimento");
-		lblNascimento.setBounds(10, 156, 77, 14);
-		contentPane.add(lblNascimento);
+		contentPane.add(lblNascimento, "cell 0 4,growx,aligny top");
 		
 		JLabel lblDieta = new JLabel("Dieta");
-		lblDieta.setBounds(10, 188, 77, 14);
-		contentPane.add(lblDieta);
+		contentPane.add(lblDieta, "cell 0 5,growx,aligny top");
 		
 		txtPeso = new JTextField();
-		txtPeso.setBounds(110, 128, 96, 20);
-		contentPane.add(txtPeso);
+		contentPane.add(txtPeso, "cell 1 3,growx,aligny top");
 		txtPeso.setColumns(10);
 		
 		txtNascimento = new JTextField();
-		txtNascimento.setBounds(110, 153, 96, 20);
-		contentPane.add(txtNascimento);
+		contentPane.add(txtNascimento, "cell 1 4,growx,aligny bottom");
 		txtNascimento.setColumns(10);
 		
 		txtDieta = new JTextField();
-		txtDieta.setBounds(110, 185, 96, 20);
-		contentPane.add(txtDieta);
+		contentPane.add(txtDieta, "cell 1 5,growx,aligny bottom");
 		txtDieta.setColumns(10);
 	}
 
