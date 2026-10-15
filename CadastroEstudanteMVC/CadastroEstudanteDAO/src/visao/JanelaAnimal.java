@@ -27,6 +27,9 @@ import net.miginfocom.swing.MigLayout;
 
 import dao.AnimalDAO;
 import modelo.Animal;
+import java.awt.Color;
+import javax.swing.ImageIcon;
+import java.awt.Image;
 
 public class JanelaAnimal extends JFrame {
 
@@ -65,6 +68,9 @@ public class JanelaAnimal extends JFrame {
 	private JTextField txtPesoEditar;
 	private JTextField txtNascimentoEditar;
 	private JTextField txtDietaEditar;
+	
+	
+	
 
 	// ==============================
 	// MAIN
@@ -93,6 +99,7 @@ public class JanelaAnimal extends JFrame {
 		setBounds(100, 100, 900, 631);
 
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(255, 255, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 
@@ -255,6 +262,7 @@ public class JanelaAnimal extends JFrame {
 		// =========================================================
 
 		JPanel panel_1 = new JPanel();
+		panel_1.setBackground(new Color(155, 230, 238));
 
 		contentPane.add(
 				panel_1,
@@ -350,7 +358,7 @@ public class JanelaAnimal extends JFrame {
 		    }
 		});
 
-		JLabel lblNewLabel_3 = new JLabel("Buscar:");
+		JLabel lblNewLabel_3 = new JLabel("Buscar nome:");
 
 		panel_1.add(
 				lblNewLabel_3, "cell 0 1,alignx left,aligny center"
@@ -664,8 +672,24 @@ public class JanelaAnimal extends JFrame {
 
 		JPanel painel =
 				new JPanel(
-						new MigLayout("", "[90px][278.00,grow]", "[][][][][][]20px[]")
+						new MigLayout(
+								"",
+								"[90px][278.00,grow]",
+								"[][][][][][]20px[][][][][][][][][][]"
+						)
 				);
+
+		painel.setBackground(
+				new Color(155, 230, 238)
+		);
+
+		painel.setForeground(
+				new Color(128, 128, 128)
+		);
+
+		// =========================================================
+		// NOME
+		// =========================================================
 
 		JLabel lblNome =
 				new JLabel("Nome:");
@@ -674,96 +698,175 @@ public class JanelaAnimal extends JFrame {
 				new JTextField();
 
 		painel.add(
-				lblNome, "cell 0 0"
+				lblNome,
+				"cell 0 0"
 		);
 
 		painel.add(
 				txtNomeDireita,
 				"cell 1 0,growx"
 		);
-		
-				JLabel lblEspecie =
-						new JLabel("Espécie:");
-				
-						painel.add(
-								lblEspecie, "cell 0 1"
-						);
-				
-						txtEspecieDireita =
-								new JTextField();
-						
-								painel.add(
-										txtEspecieDireita,
-										"cell 1 1,growx"
-								);
-		
-				JLabel lblTamanho =
-						new JLabel("Tamanho:");
-				
-						painel.add(
-								lblTamanho, "cell 0 2"
-						);
-		
-				txtTamanhoDireita =
-						new JTextField();
-				
-						painel.add(
-								txtTamanhoDireita,
-								"cell 1 2,growx"
-						);
-		
-				JLabel lblPeso =
-						new JLabel("Peso:");
-				
-						painel.add(
-								lblPeso, "cell 0 3"
-						);
-				
-						txtPesoDireita =
-								new JTextField();
-						
-								painel.add(
-										txtPesoDireita,
-										"cell 1 3,growx"
-								);
-		
-				JLabel lblNascimento =
-						new JLabel("Nascimento:");
-				
-						painel.add(
-								lblNascimento, "cell 0 4"
-						);
-				
-						txtNascimentoDireita =
-								new JTextField();
-						
-								painel.add(
-										txtNascimentoDireita,
-										"cell 1 4,growx"
-								);
-		
-				JLabel lblDieta =
-						new JLabel("Dieta:");
-				
-						painel.add(
-								lblDieta, "cell 0 5"
-						);
-		
-				txtDietaDireita =
-						new JTextField();
-				
-						painel.add(
-								txtDietaDireita,
-								"cell 1 5,growx"
-						);
-		
-				JButton btnSalvar =
-						new JButton("Cadastrar");
-				
-						painel.add(
-							    btnSalvar,
-							    "cell 0 6,alignx right"
+
+		// =========================================================
+		// ESPÉCIE
+		// =========================================================
+
+		JLabel lblEspecie =
+				new JLabel("Espécie:");
+
+		painel.add(
+				lblEspecie,
+				"cell 0 1"
+		);
+
+		txtEspecieDireita =
+				new JTextField();
+
+		painel.add(
+				txtEspecieDireita,
+				"cell 1 1,growx"
+		);
+
+		// =========================================================
+		// TAMANHO
+		// =========================================================
+
+		JLabel lblTamanho =
+				new JLabel("Tamanho:");
+
+		painel.add(
+				lblTamanho,
+				"cell 0 2"
+		);
+
+		txtTamanhoDireita =
+				new JTextField();
+
+		painel.add(
+				txtTamanhoDireita,
+				"cell 1 2,growx"
+		);
+
+		// =========================================================
+		// PESO
+		// =========================================================
+
+		JLabel lblPeso =
+				new JLabel("Peso:");
+
+		painel.add(
+				lblPeso,
+				"cell 0 3"
+		);
+
+		txtPesoDireita =
+				new JTextField();
+
+		painel.add(
+				txtPesoDireita,
+				"cell 1 3,growx"
+		);
+
+		// =========================================================
+		// NASCIMENTO
+		// =========================================================
+
+		JLabel lblNascimento =
+				new JLabel("Nascimento:");
+
+		painel.add(
+				lblNascimento,
+				"cell 0 4"
+		);
+
+		txtNascimentoDireita =
+				new JTextField();
+
+		painel.add(
+				txtNascimentoDireita,
+				"cell 1 4,growx"
+		);
+
+		// =========================================================
+		// DIETA
+		// =========================================================
+
+		JLabel lblDieta =
+				new JLabel("Dieta:");
+
+		painel.add(
+				lblDieta,
+				"cell 0 5"
+		);
+
+		txtDietaDireita =
+				new JTextField();
+
+		painel.add(
+				txtDietaDireita,
+				"cell 1 5,growx"
+		);
+
+		// =========================================================
+		// BOTÃO CADASTRAR
+		// =========================================================
+
+		JButton btnSalvar =
+				new JButton("Cadastrar");
+
+		painel.add(
+				btnSalvar,
+				"cell 0 6,alignx right"
+		);
+
+		// =========================================================
+		// LOGO
+		// =========================================================
+
+		java.net.URL caminhoLogo =
+				JanelaAnimal.class.getResource("/Resources/logo.png");
+
+		if (caminhoLogo != null) {
+
+			ImageIcon iconeOriginal =
+					new ImageIcon(caminhoLogo);
+
+			Image imagemRedimensionada =
+					iconeOriginal
+							.getImage()
+							.getScaledInstance(
+									300,
+									280,
+									Image.SCALE_SMOOTH
 							);
+
+			JLabel lblLogo =
+					new JLabel(
+							new ImageIcon(
+									imagemRedimensionada
+							)
+					);
+
+			painel.add(
+					lblLogo,
+					"cell 1 15,alignx center,aligny center"
+			);
+
+		} else {
+
+			// Caso a imagem não seja encontrada
+			JLabel lblLogo =
+					new JLabel("Logo não encontrada");
+
+			painel.add(
+					lblLogo,
+					"cell 1 15,alignx center,aligny center"
+			);
+		}
+
+		// =========================================================
+		// AÇÃO DO BOTÃO
+		// =========================================================
 
 		btnSalvar.addActionListener(
 				new ActionListener() {
